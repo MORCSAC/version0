@@ -24,7 +24,7 @@
         <li><%= link_to "Contact", contact_path  %></li>
         <% if !logged_in? %>
           <li><%= link_to "Sign up",signup_path%></li>
-          <li><%= link_to "Forgot password ?", "#" %></li>
+          <li><%= link_to "Forgot password ?", "#",style:"color:cadetblue"%></li>
         <% end %>
 
         <% if logged_in? %>
