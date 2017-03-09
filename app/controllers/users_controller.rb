@@ -9,10 +9,11 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)    # Not the final implementation!
-    p @user
+    @user = User.new(user_params)
     if @user.save
-      redirect_to @user
+      @user.send_activation_email
+      flash[:info] = "Please check your email to activate your account."
+      redirect_to '/activation'
     else
       render 'new'
     end
