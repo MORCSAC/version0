@@ -1,0 +1,46 @@
+<header class="navbar navbar-fixed-top navbar-inverse" style="background:#333">
+  <div class="container-fluid">
+    <%= link_to "morsac",root_path, id: "logo" %>
+    <nav>
+
+
+
+      <% if !logged_in? %>
+
+          <div class="navbar-form navbar-right" style="padding-top: 2px">
+
+            <%= form_for(:session, url: login_path) do |f| %>
+
+                  <%= f.email_field :email, class: 'form-control input-sm', placeholder:'Email' %>
+                  <%= f.password_field :password, class: 'form-control input-sm', placeholder:'Password' %>
+                  <%= f.submit "Log in", class: "btn  btn-sm",style:"background:cadetblue;font-weight:bold"%>
+            <% end %>
+          </div>
+      <% end %>
+
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "Help", help_path  %></li>
+        <li><%= link_to "Contact", contact_path  %></li>
+        <% if !logged_in? %>
+          <li><%= link_to "Sign up",signup_path%></li>
+          <li><%= link_to "Forgot password ?", "#" %></li>
+        <% end %>
+
+        <% if logged_in? %>
+            <li><%=link_to "generated files","#"%></li>
+            <li><%= link_to '<i class="glyphicon glyphicon-off"></i>'.html_safe, logout_path, method: "delete" %></li>
+
+      <% end %>
+      </ul>
+
+
+
+
+
+
+
+
+    </nav>
+  </div>
+</header>
