@@ -2,6 +2,15 @@ Rails.application.routes.draw do
 
 
 
+  get '/generated',to:'users#generated'
+
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
+  get 'users/compile'
+  post 'users/compile'
+  get '/download_file',to:'users#download_file'
 
   root 'static_pages#home'
 
@@ -15,6 +24,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :account_activations, only: [:edit]
+  resources :password_resets,  only: [:new, :create, :edit, :update]
 
 
 

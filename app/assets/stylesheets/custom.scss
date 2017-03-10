@@ -116,3 +116,43 @@ input {
     color: $state-danger-text;
   }
 }
+
+/*button_css*/
+#buttons-menu
+{
+  float: left;
+  width:100%;
+  padding:10px 0 10px 0;
+}
+#buttons-menu-ul
+{
+  float: left;
+  position: relative;
+  left:50%;
+  text-align: center;
+}
+
+.button{
+  float: left;
+  width: 150px;
+  margin-left: 5px;
+  margin-right: 20px;
+  padding: 10px 0;
+  text-shadow: 1px 1px 1px #000;
+  font-family: cursive , sans-serif;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.75);
+  background: #333;
+  border:2px solid  #000;
+  font-size: 15px;
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+
+ul,ol
+{
+  list-style: none;
+}

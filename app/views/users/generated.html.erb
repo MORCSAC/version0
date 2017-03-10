@@ -1,0 +1,21 @@
+
+
+<ul class="list-group" style="margin: 15px">
+  <% @my_execs.each do |exec| %>
+    <li class="list-group-item">
+      <i class="glyphicon glyphicon-file"></i>
+
+
+      <%= link_to "Download: exe"+exec[:id].to_s,download_file_path(:filename=>exec[:id]), class: "btn btn-sm btn-default", target: "_blank" %>
+
+
+
+    </li>
+
+  <% end %>
+</ul>
+
+
+
+
+

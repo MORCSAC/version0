@@ -3,3 +3,39 @@
       <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
 </div>
+
+
+
+
+
+
+
+<div class="container-fluid" id="global">
+  <div class="row">
+    <div id="code_area" class="col-md-6">
+      <div class="form-group" >
+        <label> <h2>Code:</h2></label>
+        <%=form_tag(:action =>"compile",:method=>"post") do%>
+            <%= text_area_tag('code', nil, rows:10, cols:10,class:"form-control input-lg",:style =>"background:black","ng_model"=>"clean")%>
+            <section id="buttons-menu">
+              <ul>
+                <li><%= button_tag(type: 'submit',class:"button",value:"compile") do%>
+                      <span class="glyphicon glyphicon-console "></span>  compile</li>
+                  <% end%>
+                  <li class="button" type="button" value="clean"  ng-click="clear()" > <span class="glyphicon glyphicon-erase"></span>  clear</li>
+                  </ul>
+            </section>
+        <%end%>
+      </div>
+    </div>
+    <div id="result_area" class="col-md-6" >
+      <div class="form-group ">
+        <label> <h2>Result:</h2></label>
+        <textarea class="form-control input-lg"  ng-class="{'active': <%=@arr%>}"  rows="10" cols="10" name="result" style="background:black" ><%if @arr==true%><%@arr="Compilation is Successful"%><%end%><%=@arr%>
+              </textarea>
+      </div>
+    </div>
+
+  </div>
+
+</div>
