@@ -36,6 +36,17 @@ h1 {
   text-align: center;
 }
 
+
+label h2
+{
+  font-size: 30px;
+  text-align: center;
+  font-family: limelight , sans-serif;
+  color:  #cc0000;
+  text-transform: uppercase;
+  text-shadow: 0 2px 1px black;
+}
+
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -155,4 +166,24 @@ input {
 ul,ol
 {
   list-style: none;
+  display: inline;
+  float: none;
 }
+
+ul li{
+
+  margin-left: 6px;
+}
+
+.mg-10{
+  margin-left: 15px;
+}
+
+
+.success{
+
+  color: green!important;
+
+}
+
+
