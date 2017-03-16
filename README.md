@@ -1,4 +1,4 @@
-To set up your ruby on rails envirnoment (WINDOWS or Mac), download the package in this link which contains almost evreything you need to build and run your ROR project: http://railsinstaller.org/fr-FR
+To set up your ruby on rails envirnoment (WINDOWS or MAC), download the package in this link which contains almost evreything you need to build and run your ROR project: http://railsinstaller.org/fr-FR
 
 For Linux : 
   The first step install depencies for Ruby by typing : 
