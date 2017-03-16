@@ -1,37 +1,49 @@
+<script type="text/javascript">
+
+  function clearT() {
+    document.getElementById("code").value=""
+  }
+</script>
+
+
 <div style="margin:15px">
   <% flash.each do |message_type, message| %>
       <div class="alert alert-<%= message_type %>"><%= message %></div>
   <% end %>
 </div>
 
-
-
-
-
-
-
 <div class="container-fluid" id="global">
   <div class="row">
     <div id="code_area" class="col-md-6">
       <div class="form-group" >
         <label> <h2>Code:</h2></label>
+
+
         <%=form_tag(:action =>"compile",:method=>"post") do%>
-            <%= text_area_tag('code', nil, rows:10, cols:10,class:"form-control input-lg",:style =>"background:black","ng_model"=>"clean")%>
-            <section id="buttons-menu">
-              <ul>
-                <li><%= button_tag(type: 'submit',class:"button",value:"compile") do%>
-                      <span class="glyphicon glyphicon-console "></span>  compile</li>
+            <%= text_area_tag('code', nil, rows:10, cols:10,class:"form-control input-lg",:style =>"background:black")%>
+
+                 <%= button_tag(type: 'submit',class:"button mg-10",value:"compile") do%>
+                      <span class="glyphicon glyphicon-console "></span>  compile
                   <% end%>
-                  <li class="button" type="button" value="clean"  ng-click="clear()" > <span class="glyphicon glyphicon-erase"></span>  clear</li>
-                  </ul>
-            </section>
         <%end%>
+
+
+        <a class="button" type="button" id="clean"   onclick="clearT();return false;" > <span class="glyphicon glyphicon-erase"></span>  clear</a>
+        <%=form_tag({:action=>"upload"}, multipart: true) do %>
+              <label class="button btn btn-file">
+                Browse<%= file_field_tag 'code_source',style:"display: none;",onchange:"this.form.submit()"%>
+              </label>
+          <% end %>
+
+
+
+
       </div>
     </div>
     <div id="result_area" class="col-md-6" >
       <div class="form-group ">
         <label> <h2>Result:</h2></label>
-        <textarea class="form-control input-lg"  ng-class="{'active': <%=@arr%>}"  rows="10" cols="10" name="result" style="background:black" ><%if @arr==true%><%@arr="Compilation is Successful"%><%end%><%=@arr%>
+        <textarea class="form-control input-lg <%= 'success' if @arr==true %>"   rows="10" cols="10" name="result" style="background:black;color:red;" ><%if @arr==true%><%@arr="Compilation succeeds ! your executable has been saved"%><%end%><%=@arr%>
               </textarea>
       </div>
     </div>
@@ -39,3 +51,4 @@
   </div>
 
 </div>
+
