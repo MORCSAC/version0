@@ -21,4 +21,12 @@ after that :
 		gem install bundler
 	
 	
-    
+Installing ruby on rails : 
+
+	gem install rails -v 5.0.1
+	
+then type : 
+
+	bundle install 
+
+
