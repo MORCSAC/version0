@@ -30,3 +30,15 @@ then type :
 	bundle install 
 
 
+Running the app
+
+$ git clone https://github.com/MORCSAC/version0.git
+$ cd version0-master
+$ cp config/application.yml{.example,}
+$ bundle install
+$ rake db:setup
+$ rails s -b 0.0.0.0
+
+You should then be able to open http://localhost:3000 in your browser.
+
+
