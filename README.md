@@ -41,3 +41,19 @@ Running the app
 You should then be able to open http://localhost:3000 in your browser.
 
 
+In your /config/environments/environment.rb, you must be sure to set "config.action_mailer.smtp_settings" variable to be able to send emails via STMP from your application.
+So you will have to make-sure in your app that you have in your environment file  something like this :
+
+	config.action_mailer.smtp_settings = {
+	
+      	address:"smtp.gmail.com",      - Allows you to use a remote mail server
+    	port:587,		       -On the off chance that your mail server doesn't run on port 25, you can change it.
+    	domain:"domain.of.sender.net"  -If you need to specify a HELO domain, you can do it here.
+    	authentication: "plain",       -specify the authentication type here. :plain(will send the password Base64 encoded)
+    	user_name:"dave",	       - If your mail server requires authentication, set the username in this setting.
+    	password:"secret", 	       -Your email password
+    	enable_starttls_auto: true     - Detects if STARTTLS is enabled in your SMTP server.Defaults to true.
+	
+	}
+
+
