@@ -1,3 +1,5 @@
+
+
 Rails.application.routes.draw do
 
 
@@ -10,7 +12,9 @@ Rails.application.routes.draw do
 
   get 'users/compile'
   post 'users/compile'
+  post 'users/upload'
   get '/download_file',to:'users#download_file'
+
 
   root 'static_pages#home'
 
