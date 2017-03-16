@@ -48,7 +48,6 @@ class UsersController < ApplicationController
     %x(gcc -o #{path}/prog #{path}/temp.c 2> #{path}/out.txt)
 
 
-
     File.open(path+'/out.txt','r') do |fichier|
 
       fichier.each do|line|
@@ -74,15 +73,51 @@ class UsersController < ApplicationController
   end
 
   def generated
-
     @my_execs=current_user.execs
   end
 
 
-  def download_file
 
-    file_path= current_user[:id].to_s+"/"+params[:filename]
-    send_file Rails.root.join('users', file_path),:x_sendfile=>true
+
+  def upload
+
+    @arr =""
+
+    # get the path to user's files and create it if it doesn't exist
+    path='users/'+current_user[:id].to_s
+    FileUtils.mkdir_p(path) unless File.exists?(path)
+
+    # saving file to be compiled
+    File.open(path+'/temp.c', "wb") { |f| f.write(params['code_source'].read)}
+
+    # compile the file
+    %x(gcc -o #{path}/prog #{path}/temp.c 2> #{path}/out.txt)
+
+
+    # read errors if there are any
+    File.open(path+'/out.txt','r') do |fichier|
+      fichier.each do|line|
+        @arr+="\n"+line
+      end
+    end
+
+    # delete both temporary files
+    File.delete path+'/temp.c'
+    File.delete path+'/out.txt'
+
+
+    # case when compilation goes well
+    if @arr.empty?
+      # create entry in exec table that belongs to the current user
+      exec=@current_user.execs.create
+
+      # rename the executable program  with its corresponding id
+      File.rename(path+"/prog", path+"/"+exec[:id].to_s)
+      @arr=true
+    end
+
+    render 'show'
+
   end
 
 end
